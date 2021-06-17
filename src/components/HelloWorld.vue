@@ -16,7 +16,7 @@
         </h1>
 
         <p class="subheading font-weight-regular">
-          For More information about Jaeger and Events there,
+          For More information about Events on Jaeger,
           <br>please join the
           <a
             href="https://discord.gg/QeK8gaZJXFm"
