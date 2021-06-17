@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     fetchMatches() {
-      let url = 'http://localhost:3000/api/matchinfo'
+      let url = process.env.VUE_APP_API_URL+'/matchinfo'
       axios.get(url)
           .then(response => {
             console.log(response)
