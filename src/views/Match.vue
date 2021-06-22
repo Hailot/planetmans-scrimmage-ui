@@ -70,7 +70,7 @@ export default {
 
     },
     fetchMatchPlayers() {
-      let url = process.env.VUE_APP_API_URL+'/match/'+this.matchId+'/players';
+      let url = process.env.VUE_APP_API_URL+'/match/'+this.matchId+'/players/stats';
       axios.get(url)
           .then(response => {
             console.log(response)

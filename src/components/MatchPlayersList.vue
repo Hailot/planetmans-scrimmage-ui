@@ -20,6 +20,13 @@ export default {
   data: () => ({
     headers: [
       { text: 'Name', value: 'NameDisplay' },
+      { text: 'Round', value: 'ScrimMatchRound' },
+      { text: 'Points', value: 'Points' },
+      { text: 'Netscore', value: 'NetScore' },
+      { text: 'Kills', value: 'Kills' },
+      { text: 'HeadshotKills', value: 'HeadshotKills' },
+      { text: 'Deaths', value: 'Deaths' },
+      { text: 'TotalDamageDealt', value: 'TotalDamageDealt' },
     ],
   })
 }
