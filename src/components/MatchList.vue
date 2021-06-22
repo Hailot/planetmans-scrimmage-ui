@@ -15,11 +15,22 @@
             ></v-text-field>
           </v-card-title>
           <v-data-table
+              v-model="selected"
               :headers="headers"
               :items="matches"
               :search="search"
               class="blue-grey darken-2 elevation-8 rounded"
-          ></v-data-table>
+          >
+            <template v-slot:item.actions="{item }">
+
+              <router-link :to="{ path: '/match/'+item.ScrimMatchId }">
+                <v-btn color="primary">
+                  View
+                </v-btn>
+              </router-link>
+            </template>
+
+          </v-data-table>
         </v-card>
       </v-col>
     </v-row>
@@ -33,6 +44,7 @@ export default {
   name: "MatchList",
   data () {
     return {
+      selected:[],
       search: '',
       headers: [
         {
@@ -44,6 +56,7 @@ export default {
         { text: 'Ruleset', value: 'RulesetName' },
         { text: 'Facility', value: 'FacilityName' },
         { text: 'Date', value: 'StartTime' },
+        { text: 'Actions', value: 'actions'}
       ],
       matches: [],
     }
@@ -62,7 +75,11 @@ export default {
           .catch(e => {
             this.errors.push(e)
           })
-    }
+    },
+    goToMatch() {
+
+    },
+
   }
 }
 </script>

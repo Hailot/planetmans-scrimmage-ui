@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Matches from "@/views/Matches";
+import Match from "@/views/Match";
 
 Vue.use(VueRouter)
 
@@ -24,6 +25,12 @@ const routes = [
     name: 'Matches',
     component: Matches
   },
+  {
+    path: '/match/:matchId',
+    name: 'Match',
+    component: Match,
+    props: true
+  }
 ]
 
 const router = new VueRouter({
