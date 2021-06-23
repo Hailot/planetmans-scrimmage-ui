@@ -18,9 +18,14 @@
               v-model="selected"
               :headers="headers"
               :items="matches"
+              :sort-by="['StartTime']"
+              :sort-desc="[true]"
               :search="search"
               class="blue-grey darken-2 elevation-8 rounded"
           >
+            <template v-slot:item.StartTime="{item }">
+              <td>{{ getHumanDate(item.StartTime)}}</td>
+            </template>
             <template v-slot:item.actions="{item }">
 
               <router-link :to="{ path: '/match/'+item.ScrimMatchId }">
@@ -39,6 +44,7 @@
 
 <script>
 import axios from "axios";
+import moment from 'moment'
 
 export default {
   name: "MatchList",
@@ -75,6 +81,9 @@ export default {
           .catch(e => {
             this.errors.push(e)
           })
+    },
+    getHumanDate : function (date) {
+      return moment(date).format('DD/MM/YYYY hh:mm:ss A');
     },
     goToMatch() {
 
