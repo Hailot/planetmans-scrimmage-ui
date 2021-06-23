@@ -25,6 +25,12 @@
             </v-list-item-icon>
             <v-list-item-title>Matches</v-list-item-title>
           </v-list-item>
+          <v-list-item to="/players">
+            <v-list-item-icon>
+              <v-icon>mdi-account</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Players</v-list-item-title>
+          </v-list-item>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>

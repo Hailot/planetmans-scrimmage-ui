@@ -1,7 +1,7 @@
 <template>
-  <v-container class="">
-    <h2 class="text-center">SCORES</h2>
-    <v-row no-gutters>
+    <v-container class="">
+      <h2 class="text-center">SCORES</h2>
+      <v-row no-gutters>
       <v-col
           cols="6"
           sm="6"

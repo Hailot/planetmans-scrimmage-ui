@@ -32,27 +32,30 @@
        <match-details :match="matchResult"></match-details>
       </v-tab-item>
       <v-tab-item>
-        <match-players-list :players="matchPlayers.team1"></match-players-list>
+        <match-players-list :players="this.matchPlayers.team1"></match-players-list>
       </v-tab-item>
       <v-tab-item>
-        <match-players-list :players="matchPlayers.team2"></match-players-list>
+        <match-players-list :players="this.matchPlayers.team2"></match-players-list>
       </v-tab-item>
     </v-tabs>
   </v-card>
 </template>
 
 <script>
-import MatchDetails from "../components/MatchDetails";
 import axios from "axios";
-import MatchPlayersList from "../components/MatchPlayersList";
 export default {
   name: "Match",
-  components: {MatchPlayersList, MatchDetails},
+  components: {
+    MatchPlayersList: () => import('../components/MatchPlayersList'),
+    MatchDetails: () => import('../components/MatchDetails'),
+  },
   props: ['matchId'],
   data () {
     return {
       matchResult: null,
-      matchPlayers: null,
+      matchPlayers: '',
+      team1Players:'',
+      team2Players:'',
     }
   },
   methods: {
@@ -73,8 +76,9 @@ export default {
       let url = process.env.VUE_APP_API_URL+'/match/'+this.matchId+'/players/stats';
       axios.get(url)
           .then(response => {
-            console.log(response)
+            console.log(response.data)
             this.matchPlayers = response.data
+            console.log(this.matchPlayers.team1)
           })
           .catch(e => {
             console.log(e);
@@ -85,6 +89,9 @@ export default {
   created() {
     this.fetchMatchResult();
     this.fetchMatchPlayers();
+  },
+  computed: {
+
   }
 
 }

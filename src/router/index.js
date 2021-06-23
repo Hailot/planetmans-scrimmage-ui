@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Matches from "@/views/Matches";
 import Match from "@/views/Match";
+import Players from "../views/Players";
 
 Vue.use(VueRouter)
 
@@ -30,7 +31,13 @@ const routes = [
     name: 'Match',
     component: Match,
     props: true
-  }
+  },
+  {
+    path: '/players',
+    name: 'Players',
+    component: Players
+  },
+
 ]
 
 const router = new VueRouter({

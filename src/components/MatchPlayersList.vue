@@ -8,7 +8,23 @@
         :items="players"
         item-key="NameDisplay"
         class="elevation-1"
-    ></v-data-table>
+    >
+      <template
+          v-slot:item="{ item }">
+        <tr>
+          <td>{{ item.total[0].NameDisplay }}</td>
+          <td>{{ item.total[0].Points}}</td>
+          <td>{{ item.total[0].NetScore}}</td>
+          <td>{{ item.total[0].Kills}}</td>
+          <td>{{ item.total[0].HeadshotKills}}</td>
+          <td>{{ item.total[0].Deaths}}</td>
+          <td>{{ item.total[0].DamageAssists}}</td>
+          <td>{{ item.total[0].TotalDamageDealt}}</td>
+          <td>{{ item.total[0].AssistDamageDealt}}</td>
+        </tr>
+      </template>
+    </v-data-table>
+
   </v-card>
   </v-container>
 </template>
@@ -20,13 +36,14 @@ export default {
   data: () => ({
     headers: [
       { text: 'Name', value: 'NameDisplay' },
-      { text: 'Round', value: 'ScrimMatchRound' },
       { text: 'Points', value: 'Points' },
       { text: 'Netscore', value: 'NetScore' },
       { text: 'Kills', value: 'Kills' },
       { text: 'HeadshotKills', value: 'HeadshotKills' },
       { text: 'Deaths', value: 'Deaths' },
+      { text: 'DamageAssists', value: 'DamageAssists' },
       { text: 'TotalDamageDealt', value: 'TotalDamageDealt' },
+      { text: 'AssistDamageDealt', value: 'AssistDamageDealt' },
     ],
   })
 }
