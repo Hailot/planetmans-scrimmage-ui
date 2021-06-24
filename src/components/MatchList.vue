@@ -21,6 +21,8 @@
               :sort-by="['StartTime']"
               :sort-desc="[true]"
               :search="search"
+              loading
+              loading-text="Loading... Please wait"
               class="blue-grey darken-2 elevation-8 rounded"
           >
             <template v-slot:item.StartTime="{item }">
@@ -51,6 +53,7 @@ export default {
   data () {
     return {
       selected:[],
+      loading: true,
       search: '',
       headers: [
         {
@@ -77,6 +80,7 @@ export default {
           .then(response => {
             console.log(response)
             this.matches = response.data
+            this.loading = false;
           })
           .catch(e => {
             this.errors.push(e)
