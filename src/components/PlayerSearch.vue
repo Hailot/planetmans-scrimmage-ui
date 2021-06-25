@@ -48,12 +48,26 @@
           </template>
         </v-data-table>
       </v-col>
+      <v-col cols="12" sm="12" md="12" class="mt-10">
+        <v-data-table
+            :headers="weaponHeaders"
+            :items="weapons"
+            item-key="weaponId"
+            :loading="loading"
+            loading-text="Loading all the sweat... Please wait"
+            class="elevation-1"
+        >
+        </v-data-table>
+      </v-col>
     </v-row>
+    {{ weapons  }}
   </v-container>
 </template>
 
 <script>
 import axios from "axios";
+import { mapState } from 'vuex'
+
 
 export default {
   name: "PlayerSearch",
@@ -63,6 +77,15 @@ export default {
     playerStats: [],
     columns: [],
     loading: false,
+    weaponHeaders: [
+      {text: "Id", value: "weaponId"}  ,
+      {text:"Name", value:"weaponName"}     ,
+      {text: "Kills", value: "kills"}  ,
+      {text: "Headshots",value: "headshots"}  ,
+      {text: "Deaths", value:"deaths"}     ,
+      {text: "TeamKills", value:"teamKill"}    ,
+      {text: "Assist", value: "assistedkills"} ,
+    ]
   }),
 
   methods: {
@@ -79,6 +102,8 @@ export default {
           this.columns = Object.entries(this.playerStats[0]).map(
             ([key, value]) => ({ text: key, value })
           );
+          this
+          this.$store.dispatch('playerWeapons/getPlayerWeapons',this.name)
           this.loading = false;
           this.valid = true;
         })
@@ -87,7 +112,9 @@ export default {
         });
     },
   },
-  computed: {},
+  computed: mapState({
+    weapons: state => state.playerWeapons.all
+  }),
 };
 </script>
 
